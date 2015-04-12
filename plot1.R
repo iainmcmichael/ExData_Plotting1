@@ -8,6 +8,7 @@ source("1 - LoadData.R")
 #Draw the Histogram Chart
 #================================================================================
 png(filename="plot1.png", width=480, height=480)
+par(mfrow=c(1,1))
 hist(as.numeric(data$Global_active_power), col="red", breaks=20, xlab=NA, main=NA)
 title("Global Active Power", xlab="Global Active Power (kilowatts)")
 dev.off()
