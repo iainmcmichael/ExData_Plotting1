@@ -14,8 +14,9 @@ unlink("temp")
 col <- c("character", "character", rep("numeric",7))
 rawData <- read.table("household_power_consumption.txt", sep=";", header=TRUE, 
                       colClasses=col, na.strings="?")
+rawData = mutate(rawData, FullDate = as.POSIXct(paste(Date, Time, sep=" "), 
+                                                format="%d/%m/%Y %H:%M:%S"))
 rawData = mutate(rawData, Date = as.Date(Date, format="%d/%m/%Y"))
-rawData = mutate(rawData, Time = strptime(Time,"%H:%M:%S"))
 data <- filter(rawData, Date >= as.Date("2007-02-01")
                & Date <= as.Date("2007-02-02"))
 
